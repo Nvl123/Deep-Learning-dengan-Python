@@ -205,6 +205,16 @@ h1 {
   box-shadow: inset 0 0 0 1px #ffffff88;
 }
 
+.gratitude-highlight {
+  display: inline-block;
+  margin-bottom: 0.3rem;
+  padding: 0.12rem 0.45rem;
+  border-radius: 8px;
+  background: #fff4b8;
+  color: #6e4a00;
+  font-weight: 800;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
