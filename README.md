@@ -3,6 +3,7 @@
 Website ini dibuat untuk membantu pembaca Indonesia yang belum nyaman dengan bahasa Inggris tetap bisa mempelajari deep learning dengan lebih mudah.
 
 Sumber utama: **Deep Learning with Python** oleh **François Chollet**.
+Website resmi buku asli: [https://deeplearningwithpython.io/](https://deeplearningwithpython.io/)
 
 ## Website Live
 
