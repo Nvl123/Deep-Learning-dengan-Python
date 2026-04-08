@@ -4,6 +4,12 @@ Website ini dibuat untuk membantu pembaca Indonesia yang belum nyaman dengan bah
 
 Sumber utama: **Deep Learning with Python** oleh **François Chollet**.
 
+## Website Live
+
+Akses langsung:
+
+[https://nvl123.github.io/Deep-Learning-dengan-Python/](https://nvl123.github.io/Deep-Learning-dengan-Python/)
+
 ## Disclaimer
 
 - Terjemahan ini tidak resmi dan ditujukan untuk edukasi/pembelajaran.
