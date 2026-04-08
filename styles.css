@@ -193,6 +193,18 @@ h1 {
   line-height: 1.6;
 }
 
+.gratitude-note {
+  margin: 0.95rem 0 0;
+  padding: 0.85rem 0.95rem;
+  border-radius: 12px;
+  border: 1px solid #b8cffa;
+  background: linear-gradient(145deg, #eef4ff, #e7f9f4);
+  color: #123153;
+  font-weight: 600;
+  line-height: 1.65;
+  box-shadow: inset 0 0 0 1px #ffffff88;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
