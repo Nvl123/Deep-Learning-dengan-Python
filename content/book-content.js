@@ -4,13 +4,13 @@ window.BOOK_CONTENT = {
       id: "bab-1",
       number: "01",
       title: "Apa itu Deep Learning?",
-      summary: "Mengenal cara komputer belajar dari contoh, serta hubungan sederhana antara AI, machine learning, dan deep learning.",
+      summary: "Selama beberapa tahun terakhir, kecerdasan buatan (AI) menjadi topik yang sangat sering dibahas di media. Istilah machine learning, deep learning, dan AI muncul di berbagai artikel, tidak hanya di bidang teknologi. Banyak orang membayangkan masa depan dengan chatbot pintar, mobil tanpa pengemudi (self-driving cars), dan asisten virtual. Ada yang menganggap perkembangan ini akan membawa banyak manfaat, tetapi ada juga yang khawatir AI akan menggantikan banyak pekerjaan manusia.Bagi seseorang yang mempelajari *machine learning*, penting untuk dapat membedakan mana perkembangan yang benar-benar penting dan mana yang hanya sekadar sensasi. Dengan begitu, kita dapat mengetahui inovasi yang benar-benar membawa perubahan dan tidak mudah percaya pada klaim yang berlebihan. AI akan terus berkembang, dan setelah mempelajari bidang ini, kamu juga dapat berperan dalam mengembangkan teknologi tersebut. Oleh karena itu, kita perlu memahami beberapa pertanyaan penting: Apa saja yang sudah dicapai oleh *deep learning*? Seberapa besar dampaknya? Ke mana arah perkembangannya? Dan apakah semua hype tentang AI benar adanya?",
       status: "Tersedia",
       notebook: "notebooks/latihan-bab-01.ipynb",
       sections: [
         {
-          id: "gambaran-besar",
-          title: "Gambaran besar",
+          id: "Artificial intelligence, machine learning, and deep learning",
+          title: "Artificial intelligence, machine learning, and deep learning",
           paragraphs: [
             "Deep learning adalah cara membuat komputer belajar dari banyak contoh. Kita tidak perlu menulis seluruh aturan satu per satu. Komputer mencari pola yang berguna dari data yang diberikan.",
             "Contohnya, untuk mengenali kucing, kita memperlihatkan banyak gambar beserta labelnya. Model kemudian belajar ciri visual yang sering muncul pada gambar kucing."

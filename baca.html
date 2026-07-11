@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Catatan belajar Deep Learning dengan Python dalam bahasa Indonesia.">
+  <title>Membaca — Deep Learning dengan Python</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="content/book-content.js" defer></script>
+  <script src="baca.js" defer></script>
+</head>
+<body class="reader-body">
+  <header class="site-header reader-header">
+    <a class="brand" href="index.html" aria-label="Ke beranda">
+      <span class="brand-mark">DL</span>
+      <span>Deep Learning<br><small>catatan Indonesia</small></span>
+    </a>
+    <nav aria-label="Navigasi pembaca">
+      <a href="index.html">← Beranda</a>
+    </nav>
+  </header>
+
+  <main class="reader-container">
+    <div class="reader-layout">
+      <!-- Sidebar Navigasi -->
+      <aside class="reader-sidebar" id="reader-sidebar">
+        <!-- Toggle button for mobile -->
+        <button class="sidebar-toggle-btn" id="sidebar-toggle" aria-expanded="false" aria-label="Toggle menu navigasi">
+          Menu Navigasi
+        </button>
+        <div class="sidebar-content" id="sidebar-content">
+          <section class="sidebar-group">
+            <h4 class="sidebar-title">Daftar Bab</h4>
+            <nav id="chapters-nav" aria-label="Daftar Bab"></nav>
+          </section>
+          <section class="sidebar-group" id="subchapters-group">
+            <h4 class="sidebar-title">Isi Bab</h4>
+            <nav id="subchapters-nav" aria-label="Isi Bab"></nav>
+          </section>
+        </div>
+      </aside>
+
+      <!-- Artikel Konten -->
+      <div class="reader-content-wrapper">
+        <article class="reader" id="chapter-content" aria-live="polite">
+          <p class="loading-text">Memuat konten bab…</p>
+        </article>
+
+        <!-- Navigasi Bab (Prev/Next) -->
+        <nav class="chapter-navigation" aria-label="Navigasi Bab" id="chapter-navigation"></nav>
+
+        <footer>
+          <p><strong>Catatan independen untuk pembelajaran.</strong> Bukan terjemahan resmi dan tidak menggantikan buku asli.</p>
+          <p>Hak cipta materi asli milik François Chollet dan penerbit terkait.</p>
+        </footer>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
