@@ -1,6 +1,8 @@
 # Deep Learning dengan Python — Catatan Indonesia
 
-Website belajar berbahasa Indonesia yang menyederhanakan konsep dari *Deep Learning with Python* karya François Chollet. Proyek ini bersifat independen, nonkomersial, dan bukan terjemahan resmi.
+Website belajar berbahasa Indonesia yang menyederhanakan konsep dari *Deep Learning with Python* karya François Chollet. Proyek ini bersifat independen, nonkomersial, dan bukan terjemahan resmi. 
+
+bisa di akses [di sini](https://nvl123.github.io/Deep-Learning-dengan-Python/)
 
 ## Struktur proyek
 
