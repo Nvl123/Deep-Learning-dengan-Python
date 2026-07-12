@@ -25,6 +25,15 @@ Jika suatu bab tidak memiliki notebook, isi properti tersebut dengan `null`. Lih
 
 Bab tanpa isi `sections` otomatis ditampilkan sebagai **Segera hadir** dan tidak dapat dibuka.
 
+## Pemformatan Teks & Tautan
+
+Anda dapat menggunakan format khusus di dalam paragraf pada `book-content.js`:
+- **Tebal / Miring**: Gunakan standard Markdown (seperti `**teks**` atau `*teks*`).
+- **Glosarium**: Gunakan `[istilah|arti penjelasan]` untuk menampilkan popover interaktif berisi penjelasan.
+- **Tautan Luar (Redirect ke Tab Baru)**: Gunakan `[teks tautan](url)` (contoh: `[Google](https://google.com)`) untuk membuat teks yang saat di klik otomatis mengarahkan (redirect) ke tab browser baru.
+
+Untuk panduan selengkapnya mengenai pengisian konten, silakan baca [PANDUAN-PENGISIAN.md](file:///c:/Users/ASUS/Documents/GitHub/Deep-Learning-dengan-Python/PANDUAN-PENGISIAN.md).
+
 ## Menjalankan lokal
 
 Buka `index.html` langsung di browser, atau jalankan server statis sederhana dari folder proyek:

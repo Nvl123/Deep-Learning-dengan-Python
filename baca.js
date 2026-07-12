@@ -55,6 +55,11 @@
       return `<span class="glossary-term" tabindex="0" role="button" data-definition="${definition.trim()}">${term.trim()}</span>`;
     });
 
+    // Parse markdown links [teks](url) to open in a new tab
+    formatted = formatted.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, linkText, url) => {
+      return `<a href="${url.trim()}" target="_blank" rel="noopener noreferrer">${linkText.trim()}</a>`;
+    });
+
     return formatted;
   }
 
@@ -103,10 +108,15 @@
 
     // Scroll to top of content, or to hash if present
     if (window.location.hash) {
-      const targetElement = document.querySelector(window.location.hash);
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: "smooth" });
-        return;
+      try {
+        const hashId = decodeURIComponent(window.location.hash.substring(1));
+        const targetElement = document.getElementById(hashId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: "smooth" });
+          return;
+        }
+      } catch (e) {
+        console.error("Gagal melakukan scroll ke target hash:", e);
       }
     }
     window.scrollTo({ top: 0, behavior: "smooth" });

@@ -475,6 +475,19 @@ footer p { max-width: 470px; margin: 0; }
     transform: translateY(0);
   }
 }
+/* Hyperlinks inside reader content */
+.reader a {
+  color: var(--mint-dark);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+.reader a:hover {
+  color: var(--ink);
+  text-decoration-color: var(--ink);
+}
 
 /* Subheadings inside reader content */
 .reader h4, .reader h5 {
