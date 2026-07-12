@@ -4,7 +4,7 @@ window.BOOK_CONTENT = {
       id: "bab-1",
       number: "01",
       title: "Apa itu Deep Learning?",
-      summary: "Selama beberapa tahun terakhir, kecerdasan buatan (AI) menjadi topik yang sangat sering dibahas di media. Istilah machine learning, deep learning, dan AI muncul di berbagai artikel, tidak hanya di bidang teknologi. Banyak orang membayangkan masa depan dengan chatbot pintar, mobil tanpa pengemudi (self-driving cars), dan asisten virtual. Ada yang menganggap perkembangan ini akan membawa banyak manfaat, tetapi ada juga yang khawatir AI akan menggantikan banyak pekerjaan manusia.Bagi seseorang yang mempelajari *machine learning*, penting untuk dapat membedakan mana perkembangan yang benar-benar penting dan mana yang hanya sekadar sensasi. Dengan begitu, kita dapat mengetahui inovasi yang benar-benar membawa perubahan dan tidak mudah percaya pada klaim yang berlebihan. AI akan terus berkembang, dan setelah mempelajari bidang ini, kamu juga dapat berperan dalam mengembangkan teknologi tersebut. Oleh karena itu, kita perlu memahami beberapa pertanyaan penting: Apa saja yang sudah dicapai oleh *deep learning*? Seberapa besar dampaknya? Ke mana arah perkembangannya? Dan apakah semua hype tentang AI benar adanya?",
+      summary: "Apa sebenarnya kecerdasan buatan (Artificial Intelligence/AI)? Benarkah teknologi ini akan menggantikan manusia? Sejauh mana kemampuan AI saat ini, dan ke mana arah perkembangannya di masa depan?",
       status: "Tersedia",
       notebook: "notebooks/latihan-bab-01.ipynb",
       sections: [
@@ -12,17 +12,22 @@ window.BOOK_CONTENT = {
           id: "Artificial intelligence, machine learning, and deep learning",
           title: "Artificial intelligence, machine learning, and deep learning",
           paragraphs: [
-            "Deep learning adalah cara membuat komputer belajar dari banyak contoh. Kita tidak perlu menulis seluruh aturan satu per satu. Komputer mencari pola yang berguna dari data yang diberikan.",
-            "Contohnya, untuk mengenali kucing, kita memperlihatkan banyak gambar beserta labelnya. Model kemudian belajar ciri visual yang sering muncul pada gambar kucing."
+            "Sebelum mempelajari konsep kecerdasan buatan (Artificial Intelligence atau AI) lebih jauh, penting untuk memahami hubungan antara AI, machine learning, dan deep learning. Ketiga istilah ini sering digunakan secara bergantian, padahal memiliki makna dan cakupan yang berbeda. AI merupakan konsep yang paling luas, machine learning merupakan bagian dari AI, sedangkan deep learning merupakan bagian dari machine learning. Dengan memahami hubungan tersebut, pembahasan mengenai AI akan menjadi lebih mudah dipahami.",
+            "<figure><img src='assets/subset_ai.png' alt='Subset AI'><figcaption>Gambar 1.1: Hubungan AI, ML, dan DL</figcaption></figure>"
           ],
-          points: ["Data adalah contoh yang dipelajari.", "Model adalah pola yang dibentuk komputer.", "Prediksi adalah jawaban model untuk data baru."]
         },
         {
-          id: "ai-ml-dl",
-          title: "AI, machine learning, dan deep learning",
+          id: "Artificial intelligence",
+          title: "Artificial intelligence",
           paragraphs: [
-            "Artificial intelligence (AI) adalah bidang besarnya: usaha membuat mesin melakukan tugas yang biasanya membutuhkan kecerdasan manusia.",
-            "Machine learning adalah bagian dari AI yang belajar melalui data. Deep learning adalah bagian dari machine learning yang memakai jaringan saraf dengan banyak lapisan."
+            "Kecerdasan buatan (**Artificial Intelligence** atau *AI*) mulai berkembang sebagai bidang penelitian pada tahun 1950-an. Pada masa itu, sekelompok ilmuwan di bidang ilmu komputer mulai mempertanyakan apakah komputer dapat dibuat untuk **berpikir** seperti manusia. Pertanyaan tersebut menjadi awal lahirnya berbagai penelitian yang hingga kini masih terus berkembang.",          
+            "Meskipun berbagai gagasan yang mendasari AI telah muncul beberapa tahun bahkan beberapa dekade sebelumnya, istilah artificial intelligence secara resmi diperkenalkan sebagai bidang penelitian pada tahun 1956. Saat itu, **John McCarthy**, seorang asisten profesor matematika di **Dartmouth College**, mengadakan sebuah workshop penelitian yang mempertemukan sejumlah ilmuwan untuk membahas kemungkinan menciptakan mesin yang mampu meniru kecerdasan manusia. Mereka berangkat dari gagasan bahwa setiap aspek pembelajaran dan kecerdasan pada dasarnya dapat dijelaskan secara sistematis sehingga dapat disimulasikan oleh sebuah mesin. Workshop tersebut juga bertujuan mencari cara agar mesin mampu menggunakan bahasa, membentuk konsep dan abstraksi, menyelesaikan berbagai permasalahan yang selama ini hanya dapat dilakukan manusia, serta terus meningkatkan kemampuannya sendiri.",
+            "Pada akhir workshop, berbagai tujuan tersebut memang belum berhasil dicapai sepenuhnya. Namun, pertemuan tersebut menjadi tonggak penting dalam sejarah AI karena dihadiri oleh banyak ilmuwan yang kemudian menjadi pelopor di bidang ini. Dari sinilah lahir revolusi intelektual yang hingga saat ini masih terus mendorong perkembangan teknologi kecerdasan buatan.",
+            "Secara sederhana, AI dapat didefinisikan sebagai :",
+            "> Upaya untuk mengotomatisasi tugas-tugas intelektual yang umumnya dilakukan oleh manusia", 
+            "AI merupakan bidang yang sangat luas yang mencakup **machine learning** dan **deep learning**, serta berbagai pendekatan lain yang tidak selalu melibatkan proses pembelajaran.",
+            "Sebelum tahun 1980-an, sebagian besar penelitian AI bahkan belum berfokus pada konsep pembelajaran (learning). Sebagai contoh, program catur pada masa awal dikembangkan menggunakan aturan-aturan yang ditulis secara eksplisit oleh programmer sehingga belum termasuk ke dalam kategori machine learning. Pada saat itu, banyak peneliti meyakini bahwa kecerdasan buatan setingkat manusia dapat diwujudkan dengan menyusun kumpulan aturan yang sangat banyak untuk memanipulasi pengetahuan yang tersimpan dalam basis data. Pendekatan ini dikenal sebagai **[symbolic AI| Pendekatan AI yang menggunakan seperangkat aturan logika dan simbol untuk memproses informasi (If-Else)]** dan menjadi paradigma utama dalam penelitian AI sejak tahun 1950-an hingga akhir 1980-an. Popularitasnya mencapai puncak pada era berkembangnya [expert systems| (Sistem Pakar) adalah salah satu cabang dari symblic AI yang dirancang untuk meniru kemampuan pengambilan keputusan seorang pakar manusia pada bidang tertentu dengan menggunakan kumpulan aturan (rule-based system).] pada dekade 1980-an.",
+            "Meskipun symbolic AI berhasil menyelesaikan berbagai permasalahan yang memiliki aturan jelas dan bersifat logis, seperti permainan catur, pendekatan ini mengalami kesulitan ketika diterapkan pada permasalahan yang lebih kompleks dan tidak memiliki aturan yang pasti, seperti klasifikasi gambar, pengenalan suara, maupun penerjemahan bahasa alami. Keterbatasan tersebut mendorong lahirnya pendekatan baru, yaitu machine learning, yang kemudian secara bertahap menggantikan dominasi symbolic AI dalam berbagai bidang penerapan AI."
           ]
         },
         {
@@ -32,7 +37,7 @@ window.BOOK_CONTENT = {
             "Pendekatan ini bekerja sangat baik untuk data yang rumit seperti gambar, suara, dan teks. Pola pada data tersebut sulit dijelaskan dengan aturan manual, tetapi dapat dipelajari dari banyak contoh.",
             "Deep learning bukan jawaban untuk semua masalah. Hasilnya tetap bergantung pada kualitas data, tujuan yang jelas, dan cara kita mengevaluasi model."
           ],
-          points: ["Cocok untuk pola yang kompleks.", "Biasanya membutuhkan cukup banyak data.", "Hasil model harus tetap diperiksa manusia."]
+          points: ["Cocok untuk pola yang **kompleks**.", "Biasanya membutuhkan *cukup banyak data*.", "Hasil model harus tetap diperiksa manusia."]
         },
         {
           id: "ringkasan",

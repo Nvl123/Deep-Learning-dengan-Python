@@ -41,6 +41,36 @@
     return !isInline;
   }
 
+  // Format inline styling (bold, italic, and glossary)
+  function formatText(text) {
+    if (typeof text !== "string") return text;
+    let formatted = text
+      .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+      .replace(/__(.*?)__/g, "<strong>$1</strong>")
+      .replace(/\*(.*?)\*/g, "<em>$1</em>")
+      .replace(/_(.*?)_/g, "<em>$1</em>");
+
+    // Parse glossary [kata|arti]
+    formatted = formatted.replace(/\[([^\]|]+)\|([^\]]+)\]/g, (match, term, definition) => {
+      return `<span class="glossary-term" tabindex="0" role="button" data-definition="${definition.trim()}">${term.trim()}</span>`;
+    });
+
+    return formatted;
+  }
+
+  // Render paragraphs and handle blockquotes/formatting
+  function renderParagraph(paragraph) {
+    if (isBlockHtml(paragraph)) {
+      return paragraph;
+    }
+    const trimmed = paragraph.trim();
+    if (trimmed.startsWith(">")) {
+      const quoteContent = trimmed.substring(1).trim();
+      return `<blockquote><p>${formatText(quoteContent)}</p></blockquote>`;
+    }
+    return `<p>${formatText(paragraph)}</p>`;
+  }
+
   // Load and render active chapter
   function loadChapter() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -119,9 +149,9 @@
     }
     subchaptersGroup.style.display = "block";
     subchaptersNav.innerHTML = chapter.sections.map(section => `
-      <a class="sidebar-subnav-item" href="#${section.id}">
-        <span class="subnav-dot"></span>
-        <span class="subnav-title">${section.title}</span>
+      <a class="sidebar-subnav-item" href="#${section.id}" style="text-align: left !important; display: flex !important; align-items: flex-start !important; justify-content: flex-start !important; gap: 8px !important;">
+        <span class="subnav-dot" style="flex-shrink: 0 !important; margin-top: 6px !important;"></span>
+        <span class="subnav-title" style="text-align: left !important;">${section.title}</span>
       </a>
     `).join("");
   }
@@ -132,18 +162,13 @@
       <header class="reader-content-header" id="${chapter.id}">
         <span class="chapter-kicker">Bab ${chapter.number}</span>
         <h2>${chapter.title}</h2>
-        <p class="chapter-summary">${chapter.summary}</p>
+        <p class="chapter-summary">${formatText(chapter.summary)}</p>
       </header>
       ${chapter.sections.map(section => `
         <section class="subchapter" id="${section.id}">
           <h3>${section.title}</h3>
-          ${section.paragraphs.map(paragraph => {
-            if (isBlockHtml(paragraph)) {
-              return paragraph;
-            }
-            return `<p>${paragraph}</p>`;
-          }).join("")}
-          ${section.points ? `<ul class="key-points">${section.points.map(point => `<li>${point}</li>`).join("")}</ul>` : ""}
+          ${section.paragraphs.map(paragraph => renderParagraph(paragraph)).join("")}
+          ${section.points ? `<ul class="key-points">${section.points.map(point => `<li>${formatText(point)}</li>`).join("")}</ul>` : ""}
         </section>`).join("")}
       ${chapter.notebook ? `
         <section class="practice-card">
@@ -209,6 +234,89 @@
     loadChapter();
   }
 
+  // Handle glossary term clicks & popover rendering
+  function initGlossary() {
+    // Create popup element if it doesn't exist
+    let popup = document.getElementById("glossary-popup");
+    if (!popup) {
+      popup = document.createElement("div");
+      popup.id = "glossary-popup";
+      popup.className = "glossary-popup hidden";
+      popup.innerHTML = `
+        <div class="glossary-popup-content">
+          <p id="glossary-popup-text"></p>
+          <button id="glossary-popup-close" aria-label="Tutup">&times;</button>
+        </div>
+      `;
+      document.body.appendChild(popup);
+
+      // Close button handler
+      popup.querySelector("#glossary-popup-close").addEventListener("click", () => {
+        popup.classList.add("hidden");
+      });
+    }
+
+    // Attach click listeners to all glossary terms via event delegation
+    document.addEventListener("click", (e) => {
+      const term = e.target.closest(".glossary-term");
+      if (term) {
+        e.stopPropagation();
+        const definition = term.getAttribute("data-definition");
+        const termText = term.textContent;
+
+        const popupText = popup.querySelector("#glossary-popup-text");
+        popupText.innerHTML = `<strong>${termText}</strong>: ${definition}`;
+
+        // Show popup to calculate dimensions
+        popup.classList.remove("hidden");
+
+        // Calculate positions
+        const rect = term.getBoundingClientRect();
+        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        let left = rect.left + rect.width / 2 - popup.offsetWidth / 2;
+        let top = rect.top - popup.offsetHeight - 10; // 10px spacing above term
+
+        // Boundaries checks
+        if (left < 10) left = 10;
+        if (left + popup.offsetWidth > window.innerWidth - 10) {
+          left = window.innerWidth - popup.offsetWidth - 10;
+        }
+
+        // If not enough space above (considering sticky header of ~90px), show below
+        if (rect.top - popup.offsetHeight < 90) {
+          top = rect.bottom + 10;
+          popup.classList.add("position-below");
+        } else {
+          popup.classList.remove("position-below");
+        }
+
+        popup.style.left = `${left + scrollLeft}px`;
+        popup.style.top = `${top + scrollTop}px`;
+      } else if (!e.target.closest("#glossary-popup")) {
+        // Clicked outside, close popup
+        popup.classList.add("hidden");
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        popup.classList.add("hidden");
+      }
+    });
+
+    // Close on scroll or resize for better alignment UX
+    window.addEventListener("scroll", () => {
+      popup.classList.add("hidden");
+    }, { passive: true });
+
+    window.addEventListener("resize", () => {
+      popup.classList.add("hidden");
+    });
+  }
+
   // Handle browser back/forward buttons
   window.addEventListener("popstate", () => {
     loadChapter();
@@ -216,4 +324,5 @@
 
   // Init
   loadChapter();
+  initGlossary();
 })();
