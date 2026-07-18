@@ -63,6 +63,27 @@
     return formatted;
   }
 
+  // Detect if a paragraph string is an unordered list item (starts with '- ' or '* ')
+  function isUnorderedListItem(str) {
+    const trimmed = str.trim();
+    return trimmed.startsWith("- ") || trimmed.startsWith("* ");
+  }
+
+  // Detect if a paragraph string is an ordered list item (starts with '1. ', '2. ', etc.)
+  function isOrderedListItem(str) {
+    return /^\s*\d+\.\s/.test(str);
+  }
+
+  // Extract the content of a list item (strip leading '- ', '* ', or '1. ')
+  function getListItemContent(str) {
+    const trimmed = str.trim();
+    if (trimmed.startsWith("- ") || trimmed.startsWith("* ")) {
+      return trimmed.substring(2);
+    }
+    // Ordered list: strip leading number and dot
+    return trimmed.replace(/^\d+\.\s*/, "");
+  }
+
   // Render paragraphs and handle blockquotes/formatting
   function renderParagraph(paragraph) {
     if (isBlockHtml(paragraph)) {
@@ -74,6 +95,37 @@
       return `<blockquote><p>${formatText(quoteContent)}</p></blockquote>`;
     }
     return `<p>${formatText(paragraph)}</p>`;
+  }
+
+  // Render a list of paragraphs, grouping consecutive list items into <ul> or <ol>
+  function renderParagraphList(paragraphs) {
+    if (!paragraphs || paragraphs.length === 0) return "";
+    const parts = [];
+    let i = 0;
+    while (i < paragraphs.length) {
+      const item = paragraphs[i];
+      if (isUnorderedListItem(item)) {
+        // Collect all consecutive unordered list items
+        const liItems = [];
+        while (i < paragraphs.length && isUnorderedListItem(paragraphs[i])) {
+          liItems.push(`<li>${formatText(getListItemContent(paragraphs[i]))}</li>`);
+          i++;
+        }
+        parts.push(`<ul class="key-points">${liItems.join("")}</ul>`);
+      } else if (isOrderedListItem(item)) {
+        // Collect all consecutive ordered list items
+        const liItems = [];
+        while (i < paragraphs.length && isOrderedListItem(paragraphs[i])) {
+          liItems.push(`<li>${formatText(getListItemContent(paragraphs[i]))}</li>`);
+          i++;
+        }
+        parts.push(`<ol class="key-points">${liItems.join("")}</ol>`);
+      } else {
+        parts.push(renderParagraph(item));
+        i++;
+      }
+    }
+    return parts.join("");
   }
 
   // Load and render active chapter
@@ -177,7 +229,7 @@
       ${chapter.sections.map(section => `
         <section class="subchapter" id="${section.id}">
           <h3>${section.title}</h3>
-          ${section.paragraphs.map(paragraph => renderParagraph(paragraph)).join("")}
+          ${renderParagraphList(section.paragraphs)}
           ${section.points ? `<ul class="key-points">${section.points.map(point => `<li>${formatText(point)}</li>`).join("")}</ul>` : ""}
         </section>`).join("")}
       ${chapter.notebook ? `

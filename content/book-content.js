@@ -52,6 +52,29 @@ window.BOOK_CONTENT = {
           ],
         },
         {
+          id: "Mempelajari pola dan representasi dari data",
+          title: "Mempelajari pola dan representasi dari data",
+          paragraphs: [
+            "Untuk mendefinisikan deep learning dan memahami perbedaan antara deep learning dengan pendekatan machine learning lainnya, pertama-tama kita perlu memahami apa yang dilakukan oleh algoritma machine learning. Seperti telah dijelaskan sebelumnya, machine learning bertujuan untuk menemukan aturan dalam menyelesaikan suatu tugas pemrosesan data berdasarkan contoh-contoh hasil yang diharapkan. Oleh karena itu, agar machine learning dapat bekerja, diperlukan tiga komponen utama:",
+            "- **Data masukan** : Misalnya, jika tugasnya adalah pengenalan suara (speech recognition), maka data masukan dapat berupa berkas audio yang berisi rekaman suara seseorang. Jika tugasnya adalah pemberian label pada gambar (image tagging), maka data masukan berupa gambar.",
+            "- **Contoh keluaran yang diharapkan** (expected outputs) : Pada tugas pengenalan suara, contoh keluaran dapat berupa transkrip hasil penulisan manusia dari rekaman suara tersebut. Sementara itu, pada tugas klasifikasi atau pelabelan gambar, keluaran yang diharapkan dapat berupa label seperti anjing, kucing, dan sebagainya.",
+            "- **Cara untuk mengukur** seberapa besar perbedaan antara keluaran yang dihasilkan algoritma dengan keluaran yang diharapkan — Pengukuran ini diperlukan untuk mengetahui tingkat kesalahan (error) algoritma. Nilai pengukuran tersebut kemudian digunakan sebagai sinyal umpan balik (feedback) untuk menyesuaikan cara kerja algoritma. Proses penyesuaian inilah yang disebut sebagai pembelajaran (learning).",
+            "Model machine learning mengubah data masukan menjadi keluaran berdasarkan pola yang dipelajari dari contoh-contoh pasangan data masukan dan keluaran yang telah diketahui sebelumnya. Oleh karena itu, tujuan utama machine learning maupun deep learning adalah mempelajari cara merepresentasikan data masukan agar dapat menghasilkan keluaran yang semakin mendekati hasil yang diharapkan.",
+            "Sebelum melanjutkan pembahasan, penting untuk memahami konsep representasi. Representasi adalah cara suatu data disajikan atau dikodekan. Misalnya, sebuah gambar berwarna dapat direpresentasikan dalam format [RGB | (Red, Green, Blue) adalah model warna berbasis additive color (pencampuran cahaya) yang digunakan untuk menampilkan gambar pada perangkat elektronik seperti layar monitor, televisi, smartphone, dan kamera digital] atau [HSV | (Hue, Saturation, Value) adalah model warna yang merepresentasikan persepsi manusia dengan membagi warna menjadi tiga komponen: Hue (jenis warna), Saturation (kepekatan/kemurnian), dan Value (kecerahan). Model ini sering digunakan dalam computer vision dan pengolahan citra karena mempermudah deteksi objek berdasarkan warna tanpa terpengaruh perubahan intensitas cahaya.]. Keduanya merupakan representasi yang berbeda dari gambar yang sama.",
+            "Beberapa tugas lebih mudah dilakukan pada representasi tertentu. Misalnya, memilih piksel berwarna merah lebih mudah menggunakan representasi RGB, sedangkan mengatur tingkat saturasi lebih mudah menggunakan representasi HSV. Oleh karena itu, model machine learning berusaha mempelajari representasi data yang paling sesuai agar tugas dapat diselesaikan dengan lebih mudah.",
+            "Agar lebih mudah dipahami, perhatikan sebuah sistem koordinat yang terdiri atas sumbu x dan sumbu y, serta sejumlah titik yang direpresentasikan berdasarkan koordinatnya pada bidang (x, y), seperti yang ditunjukkan pada Gambar 1.3.",
+            "<figure><img src='assets/contoh_sampel_data.png' alt='Contoh Sampel Data'><figcaption>Gambar 1.3 : Contoh Sampel Gambar</figcaption></figure>",
+            "Seperti yang terlihat, terdapat beberapa titik berwarna biru dan beberapa titik berwarna hitam. Misalkan kita ingin mengembangkan sebuah algoritma yang dapat menerima koordinat (x, y) dari suatu titik sebagai masukan, kemudian menentukan apakah titik tersebut kemungkinan termasuk ke dalam kelompok titik hitam atau titik biru. Dalam kasus ini:",
+            "- **Data masukan (input)** adalah koordinat (x, y) dari setiap titik.",
+            "- **Keluaran yang diharapkan** (expected output) adalah warna dari setiap titik, yaitu hitam atau putih.",
+            "- **Cara untuk mengukur kinerja algoritma** dapat berupa persentase titik yang berhasil diklasifikasikan dengan benar.",
+            "Yang kita perlukan adalah representasi baru dari data yang mampu memisahkan titik-titik biru dan titik-titik hitam secara jelas. Salah satu transformasi yang dapat digunakan, di antara berbagai kemungkinan lainnya, adalah [perubahan sistem koordinat | perubahan sistem koordinat merujuk pada transformasi ruang fitur (feature space transformation) untuk mengubah representasi data agar lebih mudah dipisahkan berdasarkan kelasnya.] (coordinate change), seperti yang ditunjukkan pada Gambar 1.4.",
+            "<figure><img src='assets/perubahan_koordinat.png' alt='Perubahaan Koordinat'><figcaption>Gambar 1.4 : Perubahan Koordinat</figcaption></figure>",
+
+          ]
+
+        },
+        {
           id: "ringkasan",
           title: "Ringkasan bab",
           paragraphs: [
