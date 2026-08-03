@@ -90,7 +90,16 @@ window.BOOK_CONTENT = {
             "Dalam deep learning, representasi berlapis tersebut dipelajari menggunakan model yang disebut jaringan saraf tiruan (neural network), yang tersusun dari lapisan-lapisan yang saling bertumpuk. Istilah neural network memang berasal dari bidang neurobiologi, karena beberapa konsep dasar deep learning dikembangkan dengan mengambil inspirasi dari cara kerja otak, khususnya [korteks visual|(Visual Cortex) adalah bagian dari otak besar (cerebrum) yang berfungsi sebagai pusat pemrosesan informasi visual/penglihatan Utama. Ketika mata kamu melihat sesuatu, mata sebenarnya hanya menangkap cahaya dan mengubahnya menjadi sinyal listrik. Sinyal listrik tersebut kemudian dikirim ke korteks visual untuk diolah, diterjemahkan, dan diinterpretasikan sehingga kamu paham apa yang sedang kamu lihat (misalnya mengenali bentuk, warna, gerakan, atau wajah seseorang)]. Namun, model deep learning bukanlah model yang meniru cara kerja otak. Hingga saat ini, tidak terdapat bukti bahwa otak manusia menggunakan mekanisme pembelajaran yang sama seperti yang diterapkan pada model deep learning modern. Beberapa artikel populer sering menyatakan bahwa deep learning bekerja seperti otak atau dimodelkan berdasarkan otak, padahal anggapan tersebut kurang tepat. Pemahaman seperti ini justru dapat membingungkan bagi pemula. Oleh karena itu, deep learning sebaiknya dipahami sebagai kerangka kerja matematis untuk mempelajari representasi dari data, tanpa perlu mengaitkannya secara langsung dengan mekanisme biologis pada otak.",
             "Lalu, seperti apa representasi yang dipelajari oleh algoritma deep learning? Untuk memahaminya, perhatikan bagaimana sebuah jaringan saraf yang terdiri atas beberapa lapisan (lihat Gambar 1.5) secara bertahap mentransformasikan citra sebuah angka hingga akhirnya mampu mengenali angka tersebut.",
             "<figure><img src='assets/klasifikasi_ankga_DL.png' alt='Klasifikasi Angka dengan Deep Learning'><figcaption>Gambar 1.5 : Klasifikasi Angka dengan Deep learning</figcaption></figure>",
-
+            "Seperti yang ditunjukkan pada Gambar 1.6, citra digit diproses oleh jaringan menjadi representasi yang semakin berbeda dari citra aslinya, namun semakin kaya akan informasi yang relevan terhadap hasil prediksi akhir. Jaringan mendalam (deep network) dapat dipandang sebagai proses penyaringan informasi yang berlangsung secara bertahap, di mana informasi melewati serangkaian lapisan hingga secara bertahap menjadi semakin murni, yaitu semakin berguna untuk menyelesaikan suatu tugas",
+            "<figure><img src='assets/representasi_deep.png' alt='Representasi mendalam yang dipelajari oleh model klasifikasi digit.'><figcaption>Gambar 1.6 : Representasi mendalam yang dipelajari oleh model klasifikasi digit.</figcaption></figure>",
+            "Secara teknis, itulah yang dimaksud dengan deep learning, yaitu pendekatan bertahap untuk mempelajari representasi data. Meskipun konsep ini sederhana, pada kenyataannya mekanisme yang sangat sederhana sekalipun, ketika diterapkan pada skala yang cukup besar, dapat menghasilkan kemampuan yang tampak seolah-olah seperti sebuah keajaiban.",
+          ]
+        },
+        {
+          id : "Memahami Cara Kerja Deep Learning dalam Tiga Gambar",
+          title : "Memahami Cara Kerja Deep Learning dalam Tiga Gambar",
+          paragraphs : [
+            
           ]
         },
         {
