@@ -99,6 +99,10 @@ window.BOOK_CONTENT = {
           id : "Memahami Cara Kerja Deep Learning dalam Tiga Gambar",
           title : "Memahami Cara Kerja Deep Learning dalam Tiga Gambar",
           paragraphs : [
+            "Pada tahap ini, Anda telah mengetahui bahwa machine learning bertujuan menghubungkan masukan (misalnya gambar) dengan targetnya (misalnya label kucing) melalui pembelajaran dari banyak contoh pasangan masukan dan target. Anda juga telah mengetahui bahwa jaringan saraf dalam (deep neural network) melakukan proses tersebut melalui serangkaian transformasi data sederhana yang tersusun secara berlapis (layer), dan bahwa transformasi-transformasi tersebut dipelajari melalui paparan terhadap banyak contoh data. Sekarang, mari kita lihat secara lebih konkret bagaimana proses pembelajaran tersebut berlangsung.",
+            "Cara sebuah layer memproses data masukannya ditentukan oleh bobot (weights) yang dimilikinya, yang pada dasarnya merupakan sekumpulan nilai numerik. Dalam istilah teknis, kita mengatakan bahwa transformasi yang dilakukan oleh sebuah layer ditentukan oleh bobotnya (lihat Gambar 1.7). (Bobot juga terkadang disebut sebagai parameter dari sebuah layer.) Dalam konteks ini, pembelajaran (learning) berarti mencari nilai yang paling sesuai untuk setiap bobot yang dimiliki oleh seluruh layer dalam jaringan, sehingga jaringan dapat menghasilkan keluaran yang benar untuk setiap contoh masukan.Namun, ada satu tantangan: sebuah jaringan saraf dalam dapat memiliki puluhan juta parameter. Menemukan nilai yang tepat untuk seluruh parameter tersebut tampak seperti tugas yang sangat sulit, terutama karena perubahan pada nilai satu parameter saja dapat memengaruhi perilaku semua parameter lainnya.",
+            "<figure><img src='assets/pencarian_nilai_bobot.png' alt='jaringan saraf di tentukan oleh bobotnya.'><figcaption>Gambar 1.7 : jaringan saraf di tentukan oleh bobotnya.</figcaption></figure>",
+
             
           ]
         },
