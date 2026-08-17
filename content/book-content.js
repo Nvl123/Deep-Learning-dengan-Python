@@ -105,7 +105,15 @@ window.BOOK_CONTENT = {
             "Untuk dapat mengatur keluaran suatu sistem, pertama-tama kita perlu dapat mengamatinya. Dalam konteks jaringan saraf, untuk mengatur keluaran yang dihasilkan oleh jaringan, kita perlu mengetahui seberapa jauh keluaran tersebut menyimpang dari hasil yang diharapkan. Inilah peran [loss function| Sebuah fungsi matematika yang mengukur sejauh mana prediksi yang dihasilkan oleh model deep learning menyimpang atau berbeda dari nilai sebenarnya (ground truth)] pada jaringan, yang terkadang juga disebut sebagai [objective function|Sebuah fungsi matematis yang menghitung satu nilai angka (skalar) dari parameter model, yang digunakan sebagai acuan utama untuk dioptimalkan—baik dengan cara diminimalkan (dikurangi kesalahannya) atau dimaksimalkan (ditingkatkan performanya).] atau [cost function|Sebuah fungsi matematis yang mengukur total akumulasi kesalahan dari suatu model machine learning pada seluruh dataset pelatihan (training dataset).].",
             "Loss function membandingkan prediksi jaringan dengan target sebenarnya, kemudian menghitung seberapa baik jaringan menghasilkan prediksi tersebut (lihat Gambar 1.8).",
             "<figure><img src='assets/loss_function.png' alt='Pengukuran kualitas output dengan fungsi loss.'><figcaption>Gambar 1.8 : Pengukuran kualitas output dengan fungsi loss.</figcaption></figure>",
-
+            "Dalam deep learning, nilai yang dihasilkan oleh loss function digunakan sebagai sinyal umpan balik untuk menyesuaikan nilai weight sedikit demi sedikit ke arah yang dapat menurunkan nilai loss pada contoh yang sedang diproses (lihat Gambar 1.9). Penyesuaian ini dilakukan oleh optimizer melalui algoritma yang disebut Backpropagation, yang merupakan algoritma utama dalam deep learning. Bab berikutnya akan menjelaskan secara lebih rinci bagaimana backpropagation bekerja.",
+            "<figure><img src='assets/pembaruan_bobot.png' alt='Nilai loss digunakan sebagai sinyal umpan balik untuk menyesuaikan bobot'><figcaption>Gambar 1.9 : Nilai loss digunakan sebagai sinyal umpan balik untuk menyesuaikan bobot.</figcaption></figure>",
+            "Pada awal pelatihan, bobot (weight) pada jaringan diberikan nilai secara acak, sehingga model hanya melakukan serangkaian transformasi acak terhadap input. Akibatnya, output yang dihasilkan model masih jauh dari target yang seharusnya, sehingga nilai loss juga sangat tinggi. Namun, setiap kali model memproses satu data pelatihan, nilai weight pada jaringan akan sedikit disesuaikan ke arah yang benar sehingga nilai loss semakin menurun. Proses ini disebut training loop. Jika proses tersebut diulangi dalam jumlah yang cukup banyak (biasanya puluhan kali untuk ribuan data pelatihan), akan diperoleh nilai weight yang dapat meminimalkan loss function. Model dengan nilai loss yang minimal adalah model yang menghasilkan output sedekat mungkin dengan target sebenarnya. Model seperti ini disebut model yang telah dilatih (trained model). Sekali lagi, mekanismenya sederhana, tetapi ketika diterapkan dalam skala besar, hasilnya dapat terlihat seperti sebuah keajaiban."
+          ]
+        },
+        {
+          id : "Apa yang membuat deep learning berbeda",
+          title : "Apa yang membuat deep learning berbeda",
+          paragraphs: [
             
           ]
         },
