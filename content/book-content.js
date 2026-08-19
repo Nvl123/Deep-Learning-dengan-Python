@@ -114,6 +114,10 @@ window.BOOK_CONTENT = {
           id : "Apa yang membuat deep learning berbeda",
           title : "Apa yang membuat deep learning berbeda",
           paragraphs: [
+            "Apa yang membuat deep neural networks begitu istimewa hingga banyak perusahaan tertarik berinvestasi di dalamnya dan banyak peneliti memilih untuk mendalaminya? Apakah kita masih akan menggunakan deep neural networks dalam 20 tahun ke depan?",
+            "Deep learning memiliki sejumlah keunggulan yang membuatnya dianggap sebagai sebuah revolusi dalam bidang kecerdasan buatan, dan teknologi ini tampaknya akan terus digunakan di masa depan. Mungkin beberapa dekade dari sekarang kita tidak lagi menggunakan neural networks dalam bentuk seperti yang kita kenal saat ini, tetapi apa pun teknologi yang menggantikannya kemungkinan besar akan mewarisi secara langsung konsep-konsep inti dari deep learning modern. Karakteristik penting tersebut secara umum dapat dikelompokkan ke dalam tiga kategori utama:",
+            "* **Simplicity (Kesederhanaan)** — *Deep learning* membuat proses pemecahan masalah menjadi jauh lebih mudah karena mengotomatiskan salah satu tahapan yang sebelumnya paling penting dalam alur kerja *machine learning*, yaitu **feature engineering** atau rekayasa fitur. Teknik *machine learning* sebelumnya—yang disebut **shallow learning**—hanya melakukan transformasi terhadap data masukan ke dalam satu atau dua ruang representasi secara bertahap. Pendekatan tersebut tidak cukup mampu merepresentasikan sebagian besar permasalahan yang kompleks. Oleh karena itu, manusia harus melakukan banyak upaya agar data masukan dapat diproses dengan lebih baik oleh metode-metode tersebut. Mereka harus secara manual menentukan dan merancang representasi yang tepat untuk data yang digunakan. Proses ini disebut **feature engineering**. Sebaliknya, **deep learning sepenuhnya mengotomatiskan tahap tersebut**. Dengan *deep learning*, seluruh fitur dapat dipelajari secara otomatis dalam satu proses, sehingga kita tidak perlu lagi merancangnya secara manual. Hal ini membuat alur kerja *machine learning* menjadi jauh lebih sederhana. Proses yang sebelumnya membutuhkan *pipeline* yang kompleks dan terdiri dari banyak tahapan kini sering kali dapat digantikan oleh **satu model deep learning yang sederhana dan bekerja secara end-to-end**."
+
             
           ]
         },
@@ -122,6 +126,7 @@ window.BOOK_CONTENT = {
           title: "Ringkasan bab",
           paragraphs: [
             "Deep learning membuat komputer belajar representasi dari contoh. Ia berada di dalam bidang machine learning, yang juga merupakan bagian dari AI. Setelah memahami gambaran ini, kita siap mengenal tensor dan cara data diproses oleh model."
+
           ]
         }
       ]
