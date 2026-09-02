@@ -134,6 +134,27 @@ window.BOOK_CONTENT = {
           ]
         },
         {
+          id: "Apa yang telah dicapai oleh deep learning sejauh ini",
+          title : "Apa yang telah dicapai oleh deep learning sejauh ini",
+          paragraphs : [
+            "Selama satu dekade terakhir, deep learning telah menghasilkan sebuah revolusi teknologi yang luar biasa. Perkembangannya dimulai dengan pencapaian yang mengesankan dalam [tugas-tugas perseptual | adalah tugas yang berkaitan dengan kemampuan sistem komputer dalam mengenali dan memahami informasi yang diperoleh melalui data sensorik, seperti gambar, suara, dan video.] pada periode 2013 hingga 2017, kemudian mengalami kemajuan pesat dalam berbagai tugas natural language processing atau pemrosesan bahasa alami dari tahun 2017 hingga 2022, dan mencapai puncaknya melalui gelombang aplikasi generative AI yang transformatif sejak tahun 2022 hingga saat ini.",
+            "Deep learning telah memungkinkan berbagai terobosan besar dalam permasalahan yang sangat kompleks dan selama bertahun-tahun sulit diselesaikan oleh mesin, di antaranya:",
+            "* Chatbot yang lancar dan sangat serbaguna, seperti ChatGPT dan Gemini.",
+            "* Asisten pemrograman, seperti GitHub Copilot.",
+            "* Pembuatan gambar yang fotorealistis.",
+            "* Klasifikasi gambar dengan kemampuan setara manusia.",
+            "* Transkripsi ucapan dengan kemampuan setara manusia.",
+            "* Transkripsi tulisan tangan dan teks cetak dengan kemampuan setara manusia.",
+            "* Peningkatan yang signifikan dalam penerjemahan mesin.",
+            "* Peningkatan yang signifikan dalam konversi teks menjadi suara (text-to-speech).",
+            "* Kemampuan mengemudi secara otonom dengan tingkat kemampuan setara manusia, yang pada tahun 2025 telah diterapkan untuk penggunaan publik di Phoenix, San Francisco, Los Angeles, dan Austin.",
+            "* Sistem rekomendasi yang semakin baik, seperti yang digunakan oleh YouTube, Netflix, dan Spotify.",
+            "* Kemampuan bermain Go, Catur, dan Poker yang melampaui kemampuan manusia.",
+            "Kita masih terus mengeksplorasi sejauh mana kemampuan deep learning dapat berkembang. Teknologi ini mulai diterapkan dengan tingkat keberhasilan yang tinggi pada berbagai permasalahan yang beberapa tahun lalu dianggap mustahil untuk diselesaikan. Contohnya adalah melakukan transkripsi otomatis terhadap puluhan ribu manuskrip kuno yang tersimpan di Arsip Rahasia Vatikan, mendeteksi dan mengklasifikasikan penyakit tanaman di lapangan hanya menggunakan sebuah smartphone, membantu [ahli onkologi | adalah dokter spesialis yang menangani penyakit kanker, mulai dari diagnosis, pengobatan, hingga pemantauan pasien.] maupun [radiologi| Ahli radiologi atau dokter spesialis radiologi adalah dokter yang memiliki keahlian dalam menggunakan dan menafsirkan hasil pemeriksaan pencitraan medis untuk membantu mendiagnosis penyakit atau kondisi tubuh.] dalam menginterpretasikan data pencitraan medis, serta memprediksi bencana alam seperti banjir, badai, bahkan gempa bumi.",
+            "Dengan setiap pencapaian baru, kita semakin mendekati era ketika deep learning dapat membantu manusia dalam setiap aktivitas dan berbagai bidang kehidupan—mulai dari sains, kedokteran, manufaktur, energi, transportasi, pengembangan perangkat lunak, pertanian, hingga penciptaan karya seni."
+          ]
+        },
+        {
           id: "ringkasan",
           title: "Ringkasan bab",
           paragraphs: [
