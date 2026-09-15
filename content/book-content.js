@@ -178,6 +178,16 @@ window.BOOK_CONTENT = {
           ]
         },
         {
+          id : "Janji AI",
+          title : "Janji AI",
+          paragraphs : [
+            "Meskipun kita mungkin memiliki ekspektasi jangka pendek yang terlalu tinggi terhadap AI, prospek jangka panjangnya terlihat cerah. Kita baru mulai menerapkan deep learning pada berbagai permasalahan penting yang berpotensi mengalami perubahan besar berkat teknologi ini, mulai dari diagnosis medis hingga asisten digital.",
+            "Pada tahun 2017, dalam buku yang sama ini, saya menulis:",
+            "> Saat ini, mungkin sulit untuk membayangkan bahwa AI dapat memberikan dampak besar terhadap dunia kita, karena AI belum digunakan secara luas—sama seperti pada tahun 1995, ketika sulit untuk membayangkan dampak internet di masa depan. Pada saat itu, kebanyakan orang belum melihat bagaimana internet dapat berkaitan dengan kehidupan mereka dan bagaimana teknologi tersebut akan mengubah kehidupan mereka. Hal yang sama juga terjadi pada deep learning dan AI saat ini. Namun, jangan salah: AI akan hadir dalam kehidupan kita. Dalam waktu yang tidak terlalu lama, AI akan menjadi asisten Anda, bahkan teman Anda. AI akan menjawab pertanyaan Anda, membantu mendidik anak-anak Anda, dan memantau kesehatan Anda. AI akan mengantarkan belanjaan hingga ke depan pintu rumah Anda dan mengantar Anda dari satu tempat ke tempat lain. AI akan menjadi penghubung Anda dengan dunia yang semakin kompleks dan dipenuhi informasi. Yang lebih penting lagi, AI akan membantu umat manusia untuk terus berkembang dengan mendukung para ilmuwan dalam menemukan berbagai terobosan baru di berbagai bidang ilmu pengetahuan, mulai dari genomika hingga matematika.",
+            
+          ]
+        },
+        {
           id: "ringkasan",
           title: "Ringkasan bab",
           paragraphs: [
