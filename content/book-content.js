@@ -6,7 +6,7 @@ window.BOOK_CONTENT = {
       title: "Apa itu Deep Learning?",
       summary: "Apa sebenarnya kecerdasan buatan (Artificial Intelligence/AI)? Benarkah teknologi ini akan menggantikan manusia? Sejauh mana kemampuan AI saat ini, dan ke mana arah perkembangannya di masa depan?",
       status: "Tersedia",
-      notebook: "notebooks/latihan-bab-01.ipynb",
+      notebook: null,
       sections: [
         {
           id: "Artificial intelligence, machine learning, and deep learning",
@@ -184,26 +184,48 @@ window.BOOK_CONTENT = {
             "Meskipun kita mungkin memiliki ekspektasi jangka pendek yang terlalu tinggi terhadap AI, prospek jangka panjangnya terlihat cerah. Kita baru mulai menerapkan deep learning pada berbagai permasalahan penting yang berpotensi mengalami perubahan besar berkat teknologi ini, mulai dari diagnosis medis hingga asisten digital.",
             "Pada tahun 2017, dalam buku yang sama ini, saya menulis:",
             "> Saat ini, mungkin sulit untuk membayangkan bahwa AI dapat memberikan dampak besar terhadap dunia kita, karena AI belum digunakan secara luas—sama seperti pada tahun 1995, ketika sulit untuk membayangkan dampak internet di masa depan. Pada saat itu, kebanyakan orang belum melihat bagaimana internet dapat berkaitan dengan kehidupan mereka dan bagaimana teknologi tersebut akan mengubah kehidupan mereka. Hal yang sama juga terjadi pada deep learning dan AI saat ini. Namun, jangan salah: AI akan hadir dalam kehidupan kita. Dalam waktu yang tidak terlalu lama, AI akan menjadi asisten Anda, bahkan teman Anda. AI akan menjawab pertanyaan Anda, membantu mendidik anak-anak Anda, dan memantau kesehatan Anda. AI akan mengantarkan belanjaan hingga ke depan pintu rumah Anda dan mengantar Anda dari satu tempat ke tempat lain. AI akan menjadi penghubung Anda dengan dunia yang semakin kompleks dan dipenuhi informasi. Yang lebih penting lagi, AI akan membantu umat manusia untuk terus berkembang dengan mendukung para ilmuwan dalam menemukan berbagai terobosan baru di berbagai bidang ilmu pengetahuan, mulai dari genomika hingga matematika.",
+            "Melompat ke tahun 2025, sebagian besar dari hal-hal tersebut sudah menjadi kenyataan atau sedang berada di ambang kenyataan—dan ini baru permulaannya:",
+            "* Puluhan juta orang menggunakan chatbot AI seperti ChatGPT, Gemini, dan Claude sebagai asisten sehari-hari. Faktanya, menjawab pertanyaan dan “mendidik anak” (membantu mengerjakan pekerjaan rumah) ternyata menjadi salah satu penggunaan utama chatbot tersebut! Bagi banyak orang, AI sudah menjadi antarmuka utama untuk mengakses informasi dari seluruh dunia.",
+            "* Ratusan ribu orang berinteraksi dengan “teman” AI melalui aplikasi seperti Character.ai.",
+            "* Kendaraan otonom sepenuhnya (fully autonomous driving) sudah diterapkan dalam skala besar di kota-kota seperti Phoenix, San Francisco, Los Angeles, dan Austin.",
+            "* AI membuat kemajuan besar dalam membantu mempercepat perkembangan ilmu pengetahuan. Model AlphaFold dari DeepMind membantu para ahli biologi memprediksi struktur protein dengan tingkat akurasi yang belum pernah dicapai sebelumnya. Matematikawan ternama Terence Tao meyakini bahwa sekitar tahun 2026, AI dapat menjadi rekan penulis (co-author) yang andal dalam penelitian matematika dan bidang lainnya, jika digunakan dengan tepat.",
+            "Revolusi AI, yang dahulu hanya merupakan sebuah visi yang terasa begitu jauh, kini berkembang dengan cepat di depan mata kita. Dalam perjalanannya, kita mungkin akan menghadapi beberapa kemunduran—sama seperti industri internet yang mengalami hype berlebihan pada tahun 1998–1999 dan kemudian mengalami kehancuran yang menyebabkan investasi mengering sepanjang awal tahun 2000-an. Namun, pada akhirnya kita akan sampai di sana. AI pada akhirnya akan diterapkan pada hampir setiap proses yang membentuk masyarakat dan kehidupan sehari-hari kita, sama seperti internet saat ini.",
+            "Jangan percaya begitu saja pada hype jangka pendek, tetapi percayalah pada visi jangka panjangnya. Mungkin diperlukan waktu sebelum AI dapat diterapkan hingga mencapai potensi sebenarnya—sebuah potensi yang sejauh ini bahkan belum berani dibayangkan secara utuh oleh siapa pun. Namun, AI akan terus berkembang, dan pada akhirnya AI akan mengubah dunia kita dengan cara yang luar biasa."
             
           ]
         },
-        {
-          id: "ringkasan",
-          title: "Ringkasan bab",
-          paragraphs: [
-            "Deep learning membuat komputer belajar representasi dari contoh. Ia berada di dalam bidang machine learning, yang juga merupakan bagian dari AI. Setelah memahami gambaran ini, kita siap mengenal tensor dan cara data diproses oleh model."
+        // {
+        //   id: "ringkasan",
+        //   title: "Ringkasan bab",
+        //   paragraphs: [
+        //     "Deep learning membuat komputer belajar representasi dari contoh. Ia berada di dalam bidang machine learning, yang juga merupakan bagian dari AI. Setelah memahami gambaran ini, kita siap mengenal tensor dan cara data diproses oleh model."
 
-          ]
-        }
+        //   ]
+        // }
       ]
     },
     { id: "bab-2", 
       number: "02", 
-      title: "Tensor dan operasi dasar", 
-      summary: "Bentuk data yang digunakan model dan cara mengolahnya.", 
-      status: "Segera hadir", 
+      title: "Dasar-Dasar Matematis Jaringan Saraf", 
+      summary: "Memahami deep learning membutuhkan pemahaman terhadap beberapa konsep matematika dasar, seperti tensor, operasi tensor, diferensiasi, dan gradient descent. Bab ini bertujuan membangun intuisi terhadap konsep-konsep tersebut melalui pendekatan praktis tanpa pembahasan matematis yang terlalu teknis.", 
+      status: "Tersedia", 
       notebook: null, 
-      sections: [] },
+      sections: [
+        {
+          id: "Sekilas tentang Jaringan Saraf",
+          title: "Sekilas tentang Jaringan Saraf",
+          paragraphs: [
+            "Mari kita lihat contoh konkret sebuah jaringan saraf (neural network) yang menggunakan machine learning library Keras untuk belajar mengklasifikasikan angka-angka tulisan tangan. Kita akan menggunakan Keras sepanjang buku ini. Keras merupakan library sederhana dengan tingkat abstraksi tinggi (high-level library) yang memungkinkan kita tetap berfokus pada konsep-konsep yang ingin kita pelajari.",
+            "Jika Anda belum pernah menggunakan Keras atau library serupa sebelumnya, Anda mungkin belum memahami semua bagian dari contoh ini. Tidak masalah. Dalam beberapa bagian berikutnya, kita akan membahas setiap elemen dalam contoh tersebut dan menjelaskannya secara mendetail. Jadi, jangan khawatir jika beberapa langkah terasa belum jelas atau bahkan terlihat seperti sihir bagi Anda! Kita harus memulai dari suatu tempat.",
+            "Masalah yang ingin kita selesaikan di sini adalah mengklasifikasikan gambar grayscale angka tulisan tangan berukuran 28 × 28 piksel ke dalam 10 kategori, yaitu angka 0 hingga 9.",
+            "Kita akan menggunakan dataset MNIST, yang merupakan salah satu dataset klasik dalam komunitas machine learning. Dataset ini telah ada hampir selama bidang machine learning itu sendiri dan telah dipelajari secara luas. MNIST terdiri dari 60.000 gambar untuk pelatihan (training) dan 10.000 gambar untuk pengujian (testing), yang dikumpulkan oleh National Institute of Standards and Technology (NIST dalam MNIST) pada tahun 1980-an.",
+            "Anda dapat menganggap “menyelesaikan” MNIST sebagai “Hello World”-nya deep learning—sesuatu yang dilakukan untuk memastikan bahwa algoritma yang kita buat bekerja sebagaimana mestinya. Ketika Anda mulai menekuni machine learning, Anda akan sering menemukan MNIST, baik dalam makalah ilmiah, artikel blog, maupun berbagai sumber lainnya.",
+            "Beberapa contoh gambar dari MNIST dapat dilihat pada Gambar 2.1."
+          ]
+        },
+
+
+      ] },
     { id: "bab-3", number: "03", title: "Memulai jaringan saraf", summary: "Dari data, proses belajar, hingga evaluasi hasil.", status: "Segera hadir", notebook: null, sections: [] }
   ]
 };
