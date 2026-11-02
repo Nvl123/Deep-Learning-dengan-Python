@@ -41,26 +41,97 @@
     return !isInline;
   }
 
-  // Format inline styling (bold, italic, and glossary)
+  // Format inline styling (code, bold, italic, glossary, and links)
   function formatText(text) {
     if (typeof text !== "string") return text;
-    let formatted = text
+
+    // 1. Extract inline code tokens first so internal characters (*, _, [, etc.) aren't altered
+    const codeTokens = [];
+    let formatted = text.replace(/`([^`\n]+)`/g, (match, code) => {
+      const escaped = code
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+      const placeholder = `%%CODETOKEN${codeTokens.length}%%`;
+      codeTokens.push(`<code class="inline-code">${escaped}</code>`);
+      return placeholder;
+    });
+
+    // 2. Bold and italic
+    formatted = formatted
       .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
       .replace(/__(.*?)__/g, "<strong>$1</strong>")
       .replace(/\*(.*?)\*/g, "<em>$1</em>")
       .replace(/_(.*?)_/g, "<em>$1</em>");
 
-    // Parse glossary [kata|arti]
+    // 3. Parse glossary [kata|arti]
     formatted = formatted.replace(/\[([^\]|]+)\|([^\]]+)\]/g, (match, term, definition) => {
       return `<span class="glossary-term" tabindex="0" role="button" data-definition="${definition.trim()}">${term.trim()}</span>`;
     });
 
-    // Parse markdown links [teks](url) to open in a new tab
+    // 4. Parse markdown links [teks](url) to open in a new tab
     formatted = formatted.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, linkText, url) => {
       return `<a href="${url.trim()}" target="_blank" rel="noopener noreferrer">${linkText.trim()}</a>`;
     });
 
+    // 5. Restore inline code tokens
+    formatted = formatted.replace(/%%CODETOKEN(\d+)%%/g, (match, index) => {
+      return codeTokens[Number(index)] || "";
+    });
+
     return formatted;
+  }
+
+  // Render code block HTML with language badge and copy button
+  function renderCodeBlock(codeText, language) {
+    const rawLang = (language || "").trim().toLowerCase();
+    const lang = rawLang || "python";
+    const normalizedLang = lang === "py" ? "python" : (lang === "sh" ? "bash" : lang);
+    const escapedCode = codeText
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+
+    return `<div class="code-block-wrapper">` +
+      `<div class="code-block-header">` +
+        `<span class="code-block-lang">${normalizedLang}</span>` +
+        `<button class="code-copy-btn" type="button" aria-label="Salin kode">` +
+          `<svg class="copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">` +
+            `<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>` +
+            `<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>` +
+          `</svg>` +
+          `<span class="copy-text">Salin</span>` +
+        `</button>` +
+      `</div>` +
+      `<pre class="code-block language-${normalizedLang}"><code class="language-${normalizedLang}">${escapedCode}</code></pre>` +
+    `</div>`;
+  }
+
+  // Detect if a paragraph is a markdown code block (fenced with ```)
+  function isMarkdownCodeBlock(str) {
+    if (typeof str !== "string") return false;
+    const trimmed = str.trim();
+    return trimmed.startsWith("```") && trimmed.endsWith("```") && trimmed.length >= 6;
+  }
+
+  // Parse markdown code block
+  function renderMarkdownCodeBlock(str) {
+    const trimmed = str.trim();
+    const afterTicks = trimmed.slice(3);
+    const newlineIndex = afterTicks.indexOf("\n");
+    let lang = "";
+    let code = "";
+    if (newlineIndex !== -1) {
+      lang = afterTicks.slice(0, newlineIndex).trim();
+      code = afterTicks.slice(newlineIndex + 1);
+      if (code.endsWith("```")) {
+        code = code.slice(0, -3);
+      }
+    } else {
+      code = afterTicks.slice(0, -3);
+    }
+    code = code.replace(/\r\n/g, "\n").replace(/^\n+/, "").replace(/\n+$/, "");
+    return renderCodeBlock(code, lang);
   }
 
   // Detect if a paragraph string is an unordered list item (starts with '- ' or '* ')
@@ -84,8 +155,11 @@
     return trimmed.replace(/^\d+\.\s*/, "");
   }
 
-  // Render paragraphs and handle blockquotes/formatting
+  // Render paragraphs and handle code blocks, blockquotes, and formatting
   function renderParagraph(paragraph) {
+    if (isMarkdownCodeBlock(paragraph)) {
+      return renderMarkdownCodeBlock(paragraph);
+    }
     if (isBlockHtml(paragraph)) {
       return paragraph;
     }
@@ -157,6 +231,7 @@
     renderSubchaptersList(activeChapter);
     renderContent(activeChapter);
     renderNavigationButtons(activeChapter);
+    initCodeBlocks();
 
     // Scroll to top of content, or to hash if present
     if (window.location.hash) {
@@ -294,6 +369,108 @@
     const newUrl = `${window.location.pathname}?bab=${chapterId}`;
     window.history.pushState(null, "", newUrl);
     loadChapter();
+  }
+
+  // Copy to clipboard helper with fallback
+  async function copyToClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch (e) {
+        // Fall back below
+      }
+    }
+    try {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.style.position = "fixed";
+      textarea.style.left = "-9999px";
+      textarea.style.top = "0";
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+      const successful = document.execCommand("copy");
+      document.body.removeChild(textarea);
+      return successful;
+    } catch (err) {
+      console.error("Gagal menyalin kode:", err);
+      return false;
+    }
+  }
+
+  // Bind copy events to code blocks and enhance raw <pre> blocks
+  function initCodeBlocks() {
+    // Enhance any raw <pre> tags (HTML) that are not yet inside .code-block-wrapper
+    const standalonePres = chapterContent.querySelectorAll("pre:not(.code-block)");
+    standalonePres.forEach((pre) => {
+      if (pre.closest(".code-block-wrapper")) return;
+
+      const codeEl = pre.querySelector("code") || pre;
+      const langClass = Array.from(codeEl.classList).find((c) => c.startsWith("language-"));
+      const lang = langClass ? langClass.replace("language-", "") : (codeEl.getAttribute("data-lang") || "code");
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "code-block-wrapper";
+
+      const header = document.createElement("div");
+      header.className = "code-block-header";
+      header.innerHTML = `
+        <span class="code-block-lang">${lang}</span>
+        <button class="code-copy-btn" type="button" aria-label="Salin kode">
+          <svg class="copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          <span class="copy-text">Salin</span>
+        </button>
+      `;
+
+      pre.parentNode.insertBefore(wrapper, pre);
+      wrapper.appendChild(header);
+      pre.classList.add("code-block");
+      if (!pre.classList.contains(`language-${lang}`)) {
+        pre.classList.add(`language-${lang}`);
+      }
+      if (!codeEl.classList.contains(`language-${lang}`)) {
+        codeEl.classList.add(`language-${lang}`);
+      }
+      wrapper.appendChild(pre);
+    });
+
+    // Run Prism Syntax Highlighting (VS Code theme)
+    if (window.Prism) {
+      try {
+        window.Prism.highlightAllUnder(chapterContent);
+      } catch (err) {
+        console.error("Gagal menjalankan Prism highlight:", err);
+      }
+    }
+
+    // Attach copy button listeners
+    const copyButtons = chapterContent.querySelectorAll(".code-copy-btn");
+    copyButtons.forEach((btn) => {
+      // Remove any existing click listener by cloning or flag
+      if (btn.dataset.hasCopyListener) return;
+      btn.dataset.hasCopyListener = "true";
+
+      btn.addEventListener("click", async () => {
+        const wrapper = btn.closest(".code-block-wrapper");
+        const codeEl = wrapper ? wrapper.querySelector("code") : null;
+        if (!codeEl) return;
+
+        const success = await copyToClipboard(codeEl.innerText);
+        if (success) {
+          btn.classList.add("copied");
+          const copyText = btn.querySelector(".copy-text");
+          if (copyText) copyText.textContent = "Tersalin!";
+          setTimeout(() => {
+            btn.classList.remove("copied");
+            if (copyText) copyText.textContent = "Salin";
+          }, 2000);
+        }
+      });
+    });
   }
 
   // Handle glossary term clicks & popover rendering

@@ -220,7 +220,12 @@ window.BOOK_CONTENT = {
             "Masalah yang ingin kita selesaikan di sini adalah mengklasifikasikan gambar grayscale angka tulisan tangan berukuran 28 × 28 piksel ke dalam 10 kategori, yaitu angka 0 hingga 9.",
             "Kita akan menggunakan dataset MNIST, yang merupakan salah satu dataset klasik dalam komunitas machine learning. Dataset ini telah ada hampir selama bidang machine learning itu sendiri dan telah dipelajari secara luas. MNIST terdiri dari 60.000 gambar untuk pelatihan (training) dan 10.000 gambar untuk pengujian (testing), yang dikumpulkan oleh National Institute of Standards and Technology (NIST dalam MNIST) pada tahun 1980-an.",
             "Anda dapat menganggap “menyelesaikan” MNIST sebagai “Hello World”-nya deep learning—sesuatu yang dilakukan untuk memastikan bahwa algoritma yang kita buat bekerja sebagaimana mestinya. Ketika Anda mulai menekuni machine learning, Anda akan sering menemukan MNIST, baik dalam makalah ilmiah, artikel blog, maupun berbagai sumber lainnya.",
-            "Beberapa contoh gambar dari MNIST dapat dilihat pada Gambar 2.1."
+            "Beberapa contoh gambar dari MNIST dapat dilihat pada Gambar 2.1.",
+            ">Dalam machine learning , suatu kategori dalam permasalahan klasifikasi disebut sebagai *class* (kelas). Data individual disebut sebagai *sample* (sampel). Kelas yang terkait dengan sampel tertentu disebut sebagai *label* (label).",
+            "<figure><img src='assets/mnist_digit.png' alt='contoh gambar digit pada MNIST'><figcaption>Gambar 2.1 : Contoh gambar digit pada MNIST</figcaption></figure>",
+            "Dataset MNIST telah disediakan secara langsung oleh Keras dalam bentuk empat buah array NumPy.",
+            "```python \nfrom keras.datasets import mnist\n(train_images, train_labels), (test_images, test_label) = mnist.load_data()```"
+
           ]
         },
 
